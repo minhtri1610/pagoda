@@ -1,10 +1,12 @@
-<div class="bg-hed row m-b0"> 
-    <div class="logo-head col s12 m3">
+<div class="bg-hed row m-b0">
+    <div class="p-left15 logo-head col s12 m6">
         <a href="#!" class="brand-logo"><img src="<?= URL_IMG.'/logo-sm.png'?>" class = "w100-img size-logo" alt=""></a>
+        <!-- <a href="#!" class="brand-logo"><h5>Chùa Phước Lộc</h5></a>
+        <span>Mỹ Cát - Phù Mỹ - Bình Định</span> -->
     </div>  
-    <div class="logo-head col s12 m9">
-        <a href="#!" class="brand-logo"><h3>Tên ABC</h3></a>
-        <span>Address: ABC-DCB-EDT</span>
+    <div class="logo-head col s12 m6 head-right">
+        <a href="#!" class="brand-logo"><h1>Chùa Phước Lộc</h1></a>
+        <span>Mỹ Cát - Phù Mỹ - Bình Định</span>
     </div> 
 </div>
 <nav class="bg-gradient-menu">
