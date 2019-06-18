@@ -1,0 +1,74 @@
+/* fallback */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2') format('woff2');
+}
+  
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+.bg-gradient-menu{
+    background-image: linear-gradient(#a0630a, #cd7e0b, #975f0d);
+}
+.page-footer{
+    background-color: #a0630a;
+}
+.c-left{
+    margin-left: 10%;
+}
+.w100-img{
+    max-width: 100%;
+}
+.size-logo{
+    width: 145px;
+    margin: 10% auto;
+}
+.bg-hed{
+    background: url(image/bg-header.jpg) no-repeat center center;
+    background-size: cover;
+    background-position: 32% center;
+    min-height: 65px;
+    overflow: hidden;
+}
+.logo-head{
+    display: block;
+    margin: 0;
+    width: 250px;
+    height: 150px;
+    background: none;
+}
+.m-b0{
+    margin-bottom: 0;
+}
+.m-t0{
+    margin-top: 0;
+}
+.m-l0{
+    margin-right: 0;
+}
+.m-r0{
+    margin-left: 0;
+}
+.color-yellow{
+    color: yellow;
+}
+
+@media only screen and (max-width: 414px) {
+    .bg-hed{
+        text-align: center;
+    }
+}
