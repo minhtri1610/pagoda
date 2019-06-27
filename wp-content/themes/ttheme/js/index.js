@@ -7,6 +7,11 @@
 
 $(document).ready(function(){
     $('.sidenav').sidenav();
+    autoplay();
+    function autoplay() {
+        $('.carousel').carousel('next');
+        setTimeout(autoplay, 4500);
+    }
 });
 var instance = M.Carousel.init({
     fullWidth: true,

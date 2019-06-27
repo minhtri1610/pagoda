@@ -28,7 +28,9 @@
     -webkit-font-smoothing: antialiased;
 }
 .bg-gradient-menu{
-    background-image: linear-gradient(#5e3913, #a16327, #5f3913);
+    /* background-image: linear-gradient(#5e3913, #a16327, #5f3913); */
+    /* background-image: url('image/bg_nav.png'); */
+    background-image: url('image/bg_nav_green.png');
 }
 .page-footer{
     background-color: #a0630a;
@@ -49,16 +51,28 @@
     /* margin: 10% auto; */
 }
 .bg-hed{
-    background: url(image/bamboo-left-sm.png) no-repeat center center;
-    background-size: contain;
-    background-position: left;
-    min-height: 65px;
+    /* background: url(image/bamboo-left-sm.png) no-repeat center center; */
+    background: url(image/banner_bg.png) no-repeat center center;
+    background-size: cover;
+    /* background-position: left; */
+    padding: 30px 0;
     overflow: hidden;
 }
 .head-right{
-    background: url(image/bamboo-right-sm.png) no-repeat center center;
+    /* background: url(image/bamboo-right-sm.png) no-repeat center center; */
     background-size: contain;
     background-position: right;
+    margin-top: 1px
+}
+.head-right h1{
+    margin-bottom: 0px
+}
+.head-right span{
+    color: #b87c2d;
+    font-style: italic;
+    font-size: 15px;
+    font-weight: bold;
+    
 }
 /* .logo-head{
     display: block;
@@ -79,7 +93,10 @@
 .m-r0{
     margin-left: 0;
 }
-.color-yellow{
+.color-a{
+    color: #ffffff;
+}
+.color-a:hover{
     color: yellow;
 }
 .text-center{
@@ -91,12 +108,61 @@
 nav{
     height: 54px;
     line-height: 54px;
+    
 }
-h5,h1{
+.brand-logo h5, .brand-logo h1{
+    color: #ff0033;
     font-family: 'Thu phap';
-    margin: 2rem;
-    color: #499415;
+    margin-top: 1.5rem;
 }
+.logo-head{
+    /* margin-top: 3px; */
+}
+section{
+    margin-top: 15px;
+}
+nav ul a{
+    font-size: 1.2rem;
+    font-family: 'Thu phap';
+}
+/* css header */
+.title-header{
+    background: #006633;
+    /* box-shadow: 3px 3px 6px 0px #006633; */
+    /* box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2); */
+    color: #fff100;
+    font-family: 'Thu phap';
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 5px 20% 5px 12px;
+    /* text-transform: uppercase; */
+}
+.title-line-bottom{
+    border-bottom: 2px solid #006633;
+    line-height: unset;
+    font-size: unset;
+    padding: 0px 0 8px 0;
+}
+.box-title-left{
+    margin-right: 0px!important;
+}
+.box-title-right{
+    /* margin-right: 0px; */
+}
+.card .card-content{
+    padding: 10px;
+}
+.margin0{
+    margin: 0;
+}
+.margin0-bottom{
+    margin-bottom: 0;
+}
+/* #section-news{
+    margin-top: 0;
+} */
+/* end css header */
 @media only screen and (max-width: 414px) {
     .bg-hed{
         text-align: center;
