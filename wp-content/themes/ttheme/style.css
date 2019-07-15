@@ -227,9 +227,9 @@ nav ul a{
     padding-left: 10px;
 }
 .newsest-title a{
-    font-size: 22px;
-    font-weight: 500;
-    color: #111111;
+    font-size: 16px;
+    font-weight: 600;
+    /* color: #111111; */
 }
 .newsest-title a:hover{
     color:#f0a91b;
@@ -266,23 +266,26 @@ nav ul a{
 .video-content iframe.__youtube_prefs__ {
     border-width: 0;
     width: 100%;
-    height: 480px;
+    height: 360px;
 }
 .video-list, .video-main{
     padding-top: 15px;
 }
 .video-main{
-    width: 70%;
+    width: 67%;
     padding-right: 15px;
+}
+.video-right{
+    width: 35%;
 }
 .video-list{
     display: flex;
-    width: 30%;
     flex-flow: row nowrap;
 }
 .video-list .video-thumnail{
     width: 80px;
     height: 60px;
+    flex: 1;
 }
 .video-list .video-thumnail img{
     width: 100%;
@@ -296,6 +299,7 @@ nav ul a{
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+    font-weight: 600;
 }
 .video-rigth-info{
     display: flex;
@@ -304,10 +308,12 @@ nav ul a{
 }
 .video-title-right{
     padding-left: 5px;
+    flex: 3;
 }
 .video-title-content{
-    font-size: 20px;
+    font-size: 16px;
     height: 25px;
+    font-weight: 600;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 1;
