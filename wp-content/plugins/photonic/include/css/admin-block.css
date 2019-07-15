@@ -1,0 +1,22 @@
+.photonic-gallery { text-align: center; }
+.photonic-gallery .photonic-placeholder-icon {
+	width: 120px;
+	height: 120px;
+	background-image: url('../images/Admin.svg');
+	background-size: 100%;
+	display: block;
+	text-decoration: none;
+	outline: none;
+	margin: 0 auto;
+	box-shadow: none;
+}
+
+.photonic-placeholder-icon.photonic { background-position: 0 -2760px; }
+.photonic-placeholder-icon.photonic-flickr { background-position: 0 -120px; }
+.photonic-placeholder-icon.photonic-smugmug { background-position: 0 -360px; }
+.photonic-placeholder-icon.photonic-google { background-position: 0 -840px; }
+.photonic-placeholder-icon.photonic-picasa { background-position: 0 -720px; }
+.photonic-placeholder-icon.photonic-zenfolio { background-position: 0 -480px; }
+.photonic-placeholder-icon.photonic-instagram { background-position: 0 -240px; }
+.photonic-placeholder-icon.photonic-wp { background-position: 0 -600px; }
+

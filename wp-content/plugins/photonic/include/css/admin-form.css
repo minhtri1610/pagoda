@@ -1,0 +1,15 @@
+#TB_window.photonic-tb { width: 80% !important; max-width: 1000px !important; margin-left: auto !important; margin-right: auto !important; left: 0; right: 0; }
+#TB_window.photonic-tb iframe { width: 100% !important; }
+#TB_window.photonic-tb {z-index: 155000; }
+
+table.photonic-form { float: left; width: 100%; border-width: 1px 0; border-style: dotted; border-color: #ccc; }
+table.photonic-form th { text-align: right; width: 30%; }
+table.photonic-form td, table.photonic-form th { border-collapse: collapse; padding: 4px; }
+table.photonic-form .hint { font-style: italic; }
+#photonic-shortcode-form .preview { display: block; width: 100%; padding: 5px 0; }
+#photonic-preview { width: 100%; }
+.button-panel { width: 100%; float: left; border-top: 1px dotted #ccc; margin-top: 5px; padding-top: 5px; }
+.prelude { clear: both; }
+
+#photonic-gallery-editor-body { overflow: auto !important; overflow-x: hidden; }
+div.photonic-form { display: inline-block; width: 100%; }

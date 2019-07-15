@@ -1,10 +1,11 @@
     
     <footer class="page-footer">
-        <div class="">
+
+        <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                    <h5 class="white-text">Chùa Phước Lộc</h5>
+                    <p class="grey-text text-lighten-4">Địa chỉ: Mỹ Cát - Phù Mỹ - Bình Định</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
                     <h5 class="white-text">Links</h5>
@@ -15,17 +16,28 @@
                         <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> 
         </div>
-        <div class="footer-copyright">
-            <div class="">
-                © 2019 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        <div class="text-center">
+            <div class="text-copyr">
+                © 2019 Copyright by chuaphuocloc.com
             </div>
         </div>
     </footer>
-    <script type="text/javascript" src="<?= URL_JS.'/jquery.min.js'?>"></script>
-    <script type="text/javascript" src="<?= URL_JS.'/materialize.min.js'?>"></script>
+    
+    <script type="text/javascript" src="<?= URL_JS.'/jquery-11.0.min.js'?>"></script>
+    <script type="text/javascript" src="<?= URL_JS.'/slick/slick.min.js'?>"></script>
     <script type="text/javascript" src="<?= URL_JS.'/index.js'?>"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('.slick-banner').slick({
+                infinite: true,
+                dots: true,
+                // autoplay: true,
+                // autoplaySpeed: 3000,
+            });
+        });
+    </script>
+    <?php wp_footer(); ?>
 </body>
 </html>

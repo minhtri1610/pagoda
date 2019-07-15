@@ -1,0 +1,119 @@
+body.iframe { background: #fff; }
+#photonic-flow-wrapper { padding: 1em; position: relative; }
+.photonic-flow-screen { margin-bottom: 120px; position: relative; }
+
+#photonic-flow h1 { border-bottom: 2px solid #666; padding-bottom: 0.5em; }
+
+.photonic-waiting {
+	background: #fff url("../images/downloading-dots.gif") no-repeat fixed center;
+	opacity: 0.8;
+	width: 100%;
+	height: 100%;
+	top: 0; left: 0;
+	position: fixed;
+	text-align: center;
+	display: none;
+}
+
+.photonic-flow-option-name {font-weight: bold;}
+.photonic-flow-option-name input, .photonic-flow-option-name select {font-weight: normal; }
+.photonic-required { color: #d00; margin: auto 0.5em; }
+.photonic-required abbr[title] { text-decoration: underline dotted #666; }
+
+.photonic-flow-provider .photonic-provider { width: 120px; height: 120px; background: url(../images/Admin.svg) no-repeat; background-size: 100%; margin: 0 auto; display: inline-block; cursor: pointer; }
+.photonic-flow-provider-wp .photonic-provider, .photonic-flow-provider-default .photonic-provider { background-position: 0 -600px; }
+.photonic-flow-provider-flickr .photonic-provider { background-position: 0 -120px; }
+.photonic-flow-provider-smugmug .photonic-provider { background-position: 0 -360px; }
+.photonic-flow-provider-picasa .photonic-provider { background-position: 0 -720px; }
+.photonic-flow-provider-google .photonic-provider { background-position: 0 -840px; }
+.photonic-flow-provider-zenfolio .photonic-provider { background-position: 0 -480px; }
+.photonic-flow-provider-instagram .photonic-provider { background-position: 0 -240px; }
+
+#photonic-flow-navigation { bottom: 0; left: 0; position: fixed; display: inline-block; width: 100%; background: #fff; padding: 1em 0; }
+#photonic-flow-navigation a { padding: 1em 2em; background: #0085ba; border-color: #0073aa #006799 #006799; color: #fff; font-size: 1.2em; text-decoration: none; }
+#photonic-flow-navigation a.disabled { color: #aaa; cursor: default; background: #ccc; }
+#photonic-nav-previous { float: left; }
+#photonic-nav-previous:before { font-family: Dashicons; content: "\f341"; margin: 0 0.5em; vertical-align: text-bottom;}
+#photonic-nav-next { float: right; }
+#photonic-nav-next:after { font-family: Dashicons; content: "\f345";  margin: 0 0.5em; vertical-align: text-bottom;}
+
+.photonic-flow-field {margin: 1.4em 0; position: relative; }
+.photonic-flow-field select, .photonic-flow-field input[type="text"], .photonic-flow-field input[type="password"] { display: block; }
+.photonic-flow-field-radio { display: block; padding-left: 1.5em; text-indent: -1.5em;}
+.photonic-flow-hint { display: none; position: absolute; background: #333; padding: 0.8em; border: 1px solid #111; border-radius: 3px; color: #fff; font-weight: normal; max-width: 300px; z-index: 20; }
+.photonic-flow-hint:before{
+	 content: "";
+	 border: solid transparent;
+	 border-bottom-color: #333;
+	 border-width: 10px;
+	 position: absolute;
+	 top: -20px;
+}
+.photonic-flow-hint:hover {
+	display: block;
+}
+.photonic-flow-hint a, .photonic-flow-hint a:hover, .photonic-flow-hint a:active, .photonic-flow-hint a:focus { color: #00a0d2; }
+
+.photonic-label-hint { font-size: 0.8em; background: #333; padding: 0.5em; border: 1px solid #111; border-radius: 2px; color: #fff; display: none; }
+span[aria-hidden="true"] {display:none;}
+span[aria-hidden="false"] {display:block;}
+
+.photonic-flow-error { color: #c00; padding: 1em; border: 0 solid #c00; border-left-width: 3px; background: lavenderblush; }
+.photonic-editor-info { color: #00c; border: 0 solid #00c; border-left-width: 3px; background: aliceblue; }
+.photonic-editor-info div { padding: 1em; }
+
+.photonic-flow-selector-container { display: inline-block; width: 100%; margin: 1em 0.5em; }
+.photonic-flow-selector-info { margin: 0 0.2em; }
+
+.photonic-multi-select-item {display: block; margin: 0.5em; }
+.photonic-multi-select-item input[type='checkbox'] { margin-right: 0.5em; }
+.photonic-flow-multi-select-container { margin: 1em 0; max-height: 200px; overflow-y: auto; }
+
+.photonic-flow-selector { display: inline-block; /*float: left;*/ margin: 1em; text-align: center; width: 150px; box-sizing: border-box; position: relative; max-height: 200px;}
+.photonic-flow-selector.zenfolio { width: 60px; }
+.photonic-flow-selector.selected { box-shadow: 0 0 5px 5px #5b9dd9; }
+.photonic-flow-selector-inner { margin: 0.5em; }
+.photonic-flow-selector img { width: 100%; }
+.photonic-flow-selector .dashicons { position: absolute; top: 0; right: 0; width: 25px; height: 25px; color: #fff; background: #5b9dd9; padding: 5px 2px 0; text-decoration: none; }
+
+.photonic-mark { margin: auto 1em;}
+
+.photonic-date-filter { display: inline-block; }
+.photonic-single-date { display: inline-block; margin-right: 1em; }
+.photonic-date-filter input[type='text'] {display: inline-block; margin: 0 0.5em;}
+.photonic-date-year { width: 60px; }
+.photonic-date-month, .photonic-date-date { width: 40px; }
+a.photonic-add-date-filter, a.photonic-remove-date-filter, a.photonic-add-date-range-filter, a.photonic-remove-date-range-filter { text-decoration: none; margin: 0; }
+a.photonic-remove-date-filter span, a.photonic-remove-date-range-filter span { vertical-align: middle; }
+
+.photonic-flow-layout .photonic-layout,
+.photonic-flow-slideshow-style .photonic-slideshow-style,
+.photonic-flow-strip-style .photonic-strip-style {
+	width: 150px;
+	height: 150px;
+	background: url(../images/Admin.svg) no-repeat;
+	background-size: 100%;
+	margin: 0 auto;
+	display: inline-block;
+}
+
+.photonic-flow-layout-square .photonic-layout { background-position: 0 -1350px; }
+.photonic-flow-layout-circle .photonic-layout { background-position: 0 -1500px; }
+.photonic-flow-layout-random .photonic-layout { background-position: 0 -1650px; }
+.photonic-flow-layout-masonry .photonic-layout { background-position: 0 -1800px; }
+.photonic-flow-layout-mosaic .photonic-layout { background-position: 0 -1950px; }
+.photonic-flow-layout-slideshow .photonic-layout { background-position: 0 -1200px; }
+
+.photonic-flow-slideshow-style-strip-below .photonic-slideshow-style { background-position: 0 -2100px; }
+.photonic-flow-slideshow-style-strip-above .photonic-slideshow-style { background-position: 0 -2250px; }
+.photonic-flow-slideshow-style-strip-right .photonic-slideshow-style { background-position: 0 -2400px; }
+.photonic-flow-slideshow-style-no-strip .photonic-slideshow-style { background-position: 0 -1200px; }
+
+.photonic-flow-strip-style-thumbs .photonic-strip-style { background-position: 0 -2100px; }
+.photonic-flow-strip-style-button .photonic-strip-style { background-position: 0 -2550px; }
+
+.photonic-more-wrapper { display: inline-block; width: 100%; margin: 1.4em 0; }
+.photonic-flow-more, .photonic-flow-more:hover, .photonic-flow-more:active, .photonic-flow-more:focus { margin: 1.4em 0; padding: 1em 2em; background: #0085ba; border-color: #0073aa #006799 #006799; color: #fff; text-decoration: none; }
+
+.thumb-controls { text-align: right; }
+.photonic-flow-field input[type="text"].search-thumbs { display: inline; background: url(../images/Admin.svg) no-repeat right -576px; background-size: 24px; height: 24px; }

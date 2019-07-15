@@ -1,0 +1,1310 @@
+/*! PhotoSwipe main CSS by Dmitry Semenov | photoswipe.com | MIT license */
+/*
+	Styles for basic PhotoSwipe functionality (sliding area, open/close transitions)
+*/
+/* pswp = photoswipe */
+.pswp {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+	-ms-touch-action: none;
+	touch-action: none;
+	z-index: 1500;
+	-webkit-text-size-adjust: 100%;
+	/* create separate layer, to avoid paint on window.onscroll in webkit/blink */
+	-webkit-backface-visibility: hidden;
+	outline: none;
+}
+
+.pswp * {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.pswp img {
+	max-width: none;
+}
+
+/* style is added when JS option showHideOpacity is set to true */
+.pswp--animate_opacity {
+	/* 0.001, because opacity:0 doesn't trigger Paint action, which causes lag at start of transition */
+	opacity: 0.001;
+	will-change: opacity;
+	/* for open/close transition */
+	-webkit-transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
+	transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
+}
+
+.pswp--open {
+	display: block;
+}
+
+.pswp--zoom-allowed .pswp__img {
+	/* autoprefixer: off */
+	cursor: -webkit-zoom-in;
+	cursor: -moz-zoom-in;
+	cursor: zoom-in;
+}
+
+.pswp--zoomed-in .pswp__img {
+	/* autoprefixer: off */
+	cursor: -webkit-grab;
+	cursor: -moz-grab;
+	cursor: grab;
+}
+
+.pswp--dragging .pswp__img {
+	/* autoprefixer: off */
+	cursor: -webkit-grabbing;
+	cursor: -moz-grabbing;
+	cursor: grabbing;
+}
+
+/*
+	Background is added as a separate element.
+	As animating opacity is much faster than animating rgba() background-color.
+*/
+.pswp__bg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+	will-change: opacity;
+}
+
+.pswp__scroll-wrap {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.pswp__container,
+.pswp__zoom-wrap {
+	-ms-touch-action: none;
+	touch-action: none;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+/* Prevent selection and tap highlights */
+.pswp__container,
+.pswp__img {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+}
+
+.pswp__zoom-wrap {
+	position: absolute;
+	width: 100%;
+	-webkit-transform-origin: left top;
+	-ms-transform-origin: left top;
+	transform-origin: left top;
+	/* for open/close transition */
+	-webkit-transition: -webkit-transform 333ms cubic-bezier(0.4, 0, 0.22, 1);
+	transition: transform 333ms cubic-bezier(0.4, 0, 0.22, 1);
+}
+
+.pswp__bg {
+	will-change: opacity;
+	/* for open/close transition */
+	-webkit-transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
+	transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
+}
+
+.pswp--animated-in .pswp__bg,
+.pswp--animated-in .pswp__zoom-wrap {
+	-webkit-transition: none;
+	transition: none;
+}
+
+.pswp__container,
+.pswp__zoom-wrap {
+	-webkit-backface-visibility: hidden;
+}
+
+.pswp__item {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+}
+
+.pswp__img {
+	position: absolute;
+	width: auto;
+	height: auto;
+	top: 0;
+	left: 0;
+}
+
+/*
+	stretched thumbnail or div placeholder element (see below)
+	style is added to avoid flickering in webkit/blink when layers overlap
+*/
+.pswp__img--placeholder {
+	-webkit-backface-visibility: hidden;
+}
+
+/*
+	div element that matches size of large image
+	large image loads on top of it
+*/
+.pswp__img--placeholder--blank {
+	background: #222;
+}
+
+.pswp--ie .pswp__img {
+	width: 100% !important;
+	height: auto !important;
+	left: 0;
+	top: 0;
+}
+
+/*
+	Error message appears when image is not loaded
+	(JS option errorMsg controls markup)
+*/
+.pswp__error-msg {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 100%;
+	text-align: center;
+	font-size: 14px;
+	line-height: 16px;
+	margin-top: -8px;
+	color: #CCC;
+}
+
+.pswp__error-msg a {
+	color: #CCC;
+	text-decoration: underline;
+}
+
+
+/*! PhotoSwipe Default UI CSS by Dmitry Semenov | photoswipe.com | MIT license */
+/*
+
+	Contents:
+
+	1. Buttons
+	2. Share modal and links
+	3. Index indicator ("1 of X" counter)
+	4. Caption
+	5. Loading indicator
+	6. Additional styles (root element, top bar, idle state, hidden state, etc.)
+
+*/
+/*
+
+	1. Buttons
+
+ */
+/* <button> css reset */
+.pswp__button {
+	width: 44px;
+	height: 44px;
+	position: relative;
+	background: none;
+	cursor: pointer;
+	overflow: visible;
+	-webkit-appearance: none;
+	display: block;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	float: right;
+	opacity: 0.75;
+	-webkit-transition: opacity 0.2s;
+	transition: opacity 0.2s;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.pswp__button:focus, .pswp__button:hover {
+	opacity: 1;
+	background-color: transparent;
+	color: #fff;
+	background-image: url(photoswipe-img/default-skin.png);
+}
+
+.pswp__button:active {
+	outline: none;
+	opacity: 0.9;
+}
+
+.pswp__button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+/* pswp__ui--over-close class it added when mouse is over element that should close gallery */
+.pswp__ui--over-close .pswp__button--close {
+	opacity: 1;
+}
+
+.pswp__button,
+.pswp__button--arrow--left:before,
+.pswp__button--arrow--right:before {
+	background: url(photoswipe-img/default-skin.png) 0 0 no-repeat;
+	background-size: 264px 88px;
+	width: 44px;
+	height: 44px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 1.09375), (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
+	/* Serve SVG sprite if browser supports SVG and resolution is more than 105dpi */
+	.pswp--svg .pswp__button,
+	.pswp--svg .pswp__button--arrow--left:before,
+	.pswp--svg .pswp__button--arrow--right:before {
+		background-image: url(photoswipe-img/default-skin.svg);
+	}
+
+	.pswp--svg .pswp__button--arrow--left,
+	.pswp--svg .pswp__button--arrow--right {
+		background: none;
+	}
+}
+
+.pswp__button--close, .pswp__button--close:focus, .pswp__button--close:hover {
+	background-position: 0 -44px;
+}
+
+.pswp__button--share, .pswp__button--share:focus, .pswp__button--share:hover {
+	background-position: -44px -44px;
+}
+
+.pswp__button--fs {
+	display: none;
+}
+
+.pswp--supports-fs .pswp__button--fs {
+	display: block;
+}
+
+.pswp--fs .pswp__button--fs, .pswp--fs .pswp__button--fs:focus, .pswp--fs .pswp__button--fs:hover {
+	background-position: -44px 0;
+}
+
+.pswp__button--zoom, .pswp__button--zoom:focus, .pswp__button--zoom:hover {
+	display: none;
+	background-position: -88px 0;
+}
+
+.pswp--zoom-allowed .pswp__button--zoom, .pswp--zoom-allowed .pswp__button--zoom:focus, .pswp--zoom-allowed .pswp__button--zoom:hover {
+	display: block;
+}
+
+.pswp--zoomed-in .pswp__button--zoom, .pswp--zoomed-in .pswp__button--zoom:focus, .pswp--zoomed-in .pswp__button--zoom:hover {
+	background-position: -132px 0;
+}
+
+/* no arrows on touch screens */
+.pswp--touch .pswp__button--arrow--left,
+.pswp--touch .pswp__button--arrow--right {
+	visibility: hidden;
+}
+
+/*
+	Arrow buttons hit area
+	(icon is added to :before pseudo-element)
+*/
+.pswp__button--arrow--left, .pswp__button--arrow--left:focus, .pswp__button--arrow--left:hover,
+.pswp__button--arrow--right, .pswp__button--arrow--right:focus, .pswp__button--arrow--right:hover {
+	background: none;
+	top: 50%;
+	margin-top: -50px;
+	width: 70px;
+	height: 100px;
+	position: absolute;
+}
+
+.pswp__button--arrow--left {
+	left: 0;
+}
+
+.pswp__button--arrow--right {
+	right: 0;
+}
+
+.pswp__button--arrow--left:before,
+.pswp__button--arrow--right:before {
+	content: '';
+	top: 35px;
+	background-color: rgba(0, 0, 0, 0.3);
+	height: 30px;
+	width: 32px;
+	position: absolute;
+}
+
+.pswp__button--arrow--left:before {
+	left: 6px;
+	background-position: -138px -44px;
+}
+
+.pswp__button--arrow--right:before {
+	right: 6px;
+	background-position: -94px -44px;
+}
+
+/*
+
+	2. Share modal/popup and links
+
+ */
+.pswp__counter,
+.pswp__share-modal {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.pswp__share-modal {
+	display: block;
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	padding: 10px;
+	position: absolute;
+	z-index: 1600;
+	opacity: 0;
+	-webkit-transition: opacity 0.25s ease-out;
+	transition: opacity 0.25s ease-out;
+	-webkit-backface-visibility: hidden;
+	will-change: opacity;
+}
+
+.pswp__share-modal--hidden {
+	display: none;
+}
+
+.pswp__share-tooltip {
+	z-index: 1620;
+	position: absolute;
+	background: #FFF;
+	top: 56px;
+	border-radius: 2px;
+	display: block;
+	width: auto;
+	right: 44px;
+	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+	-webkit-transform: translateY(6px);
+	-ms-transform: translateY(6px);
+	transform: translateY(6px);
+	-webkit-transition: -webkit-transform 0.25s;
+	transition: transform 0.25s;
+	-webkit-backface-visibility: hidden;
+	will-change: transform;
+}
+
+.pswp__share-tooltip a {
+	display: block;
+	padding: 8px 12px;
+	color: #000;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: 18px;
+}
+
+.pswp__share-tooltip a:hover {
+	text-decoration: none;
+	color: #000;
+}
+
+.pswp__share-tooltip a:first-child {
+	/* round corners on the first/last list item */
+	border-radius: 2px 2px 0 0;
+}
+
+.pswp__share-tooltip a:last-child {
+	border-radius: 0 0 2px 2px;
+}
+
+.pswp__share-modal--fade-in {
+	opacity: 1;
+}
+
+.pswp__share-modal--fade-in .pswp__share-tooltip {
+	-webkit-transform: translateY(0);
+	-ms-transform: translateY(0);
+	transform: translateY(0);
+}
+
+/* increase size of share links on touch devices */
+.pswp--touch .pswp__share-tooltip a {
+	padding: 16px 12px;
+}
+
+a.pswp__share--facebook:before {
+	content: '';
+	display: block;
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: -12px;
+	right: 15px;
+	border: 6px solid transparent;
+	border-bottom-color: #FFF;
+	-webkit-pointer-events: none;
+	-moz-pointer-events: none;
+	pointer-events: none;
+}
+
+a.pswp__share--facebook:hover {
+	background: #3E5C9A;
+	color: #FFF;
+}
+
+a.pswp__share--facebook:hover:before {
+	border-bottom-color: #3E5C9A;
+}
+
+a.pswp__share--twitter:hover {
+	background: #55ACEE;
+	color: #FFF;
+}
+
+a.pswp__share--googleplus:hover {
+	background: #c66;
+	color: #FFF;
+}
+
+a.pswp__share--pinterest:hover {
+	background: #CCC;
+	color: #CE272D;
+}
+
+a.pswp__share--download:hover {
+	background: #DDD;
+}
+
+/*
+
+	3. Index indicator ("1 of X" counter)
+
+ */
+.pswp__counter {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 44px;
+	font-size: 13px;
+	line-height: 44px;
+	color: #FFF;
+	opacity: 0.75;
+	padding: 0 10px;
+}
+
+/*
+
+	4. Caption
+
+ */
+.pswp__caption {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	min-height: 44px;
+}
+
+.pswp__caption small {
+	font-size: 11px;
+	color: #BBB;
+}
+
+.pswp__caption__center {
+	text-align: center;
+	max-width: 420px;
+	margin: 0 auto;
+	font-size: 13px;
+	padding: 10px;
+	line-height: 20px;
+	color: #CCC;
+}
+
+.pswp__caption--empty {
+	display: none;
+}
+
+/* Fake caption element, used to calculate height of next/prev image */
+.pswp__caption--fake {
+	visibility: hidden;
+}
+
+/*
+
+	5. Loading indicator (preloader)
+
+	You can play with it here - http://codepen.io/dimsemenov/pen/yyBWoR
+
+ */
+.pswp__preloader {
+	width: 44px;
+	height: 44px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -22px;
+	opacity: 0;
+	-webkit-transition: opacity 0.25s ease-out;
+	transition: opacity 0.25s ease-out;
+	will-change: opacity;
+	direction: ltr;
+}
+
+.pswp__preloader__icn {
+	width: 20px;
+	height: 20px;
+	margin: 12px;
+}
+
+.pswp__preloader--active {
+	opacity: 1;
+}
+
+.pswp__preloader--active .pswp__preloader__icn {
+	/* We use .gif in browsers that don't support CSS animation */
+	background: url(photoswipe-img/preloader.gif) 0 0 no-repeat;
+}
+
+.pswp--css_animation .pswp__preloader--active {
+	opacity: 1;
+}
+
+.pswp--css_animation .pswp__preloader--active .pswp__preloader__icn {
+	-webkit-animation: clockwise 500ms linear infinite;
+	animation: clockwise 500ms linear infinite;
+}
+
+.pswp--css_animation .pswp__preloader--active .pswp__preloader__donut {
+	-webkit-animation: donut-rotate 1000ms cubic-bezier(0.4, 0, 0.22, 1) infinite;
+	animation: donut-rotate 1000ms cubic-bezier(0.4, 0, 0.22, 1) infinite;
+}
+
+.pswp--css_animation .pswp__preloader__icn {
+	background: none;
+	opacity: 0.75;
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	left: 15px;
+	top: 15px;
+	margin: 0;
+}
+
+.pswp--css_animation .pswp__preloader__cut {
+	/*
+			  The idea of animating inner circle is based on Polymer ("material") loading indicator
+			   by Keanu Lee https://blog.keanulee.com/2014/10/20/the-tale-of-three-spinners.html
+		  */
+	position: relative;
+	width: 7px;
+	height: 14px;
+	overflow: hidden;
+}
+
+.pswp--css_animation .pswp__preloader__donut {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 14px;
+	height: 14px;
+	border: 2px solid #FFF;
+	border-radius: 50%;
+	border-left-color: transparent;
+	border-bottom-color: transparent;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: none;
+	margin: 0;
+}
+
+@media screen and (max-width: 1024px) {
+	.pswp__preloader {
+		position: relative;
+		left: auto;
+		top: auto;
+		margin: 0;
+		float: right;
+	}
+}
+
+@-webkit-keyframes clockwise {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes clockwise {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes donut-rotate {
+	0% {
+		-webkit-transform: rotate(0);
+		transform: rotate(0);
+	}
+	50% {
+		-webkit-transform: rotate(-140deg);
+		transform: rotate(-140deg);
+	}
+	100% {
+		-webkit-transform: rotate(0);
+		transform: rotate(0);
+	}
+}
+
+@keyframes donut-rotate {
+	0% {
+		-webkit-transform: rotate(0);
+		transform: rotate(0);
+	}
+	50% {
+		-webkit-transform: rotate(-140deg);
+		transform: rotate(-140deg);
+	}
+	100% {
+		-webkit-transform: rotate(0);
+		transform: rotate(0);
+	}
+}
+
+/*
+
+	6. Additional styles
+
+ */
+/* root element of UI */
+.pswp__ui {
+	-webkit-font-smoothing: antialiased;
+	visibility: visible;
+	opacity: 1;
+	z-index: 1550;
+}
+
+/* top black bar with buttons and "1 of X" indicator */
+.pswp__top-bar {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 44px;
+	width: 100%;
+}
+
+.pswp__caption,
+.pswp__top-bar,
+.pswp--has_mouse .pswp__button--arrow--left,
+.pswp--has_mouse .pswp__button--arrow--right {
+	-webkit-backface-visibility: hidden;
+	will-change: opacity;
+	-webkit-transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
+	transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
+}
+
+/* pswp--has_mouse class is added only when two subsequent mousemove events occur */
+.pswp--has_mouse .pswp__button--arrow--left,
+.pswp--has_mouse .pswp__button--arrow--right {
+	visibility: visible;
+}
+
+.pswp__top-bar,
+.pswp__caption {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* pswp__ui--fit class is added when main image "fits" between top bar and bottom bar (caption) */
+.pswp__ui--fit .pswp__top-bar,
+.pswp__ui--fit .pswp__caption {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* pswp__ui--idle class is added when mouse isn't moving for several seconds (JS option timeToIdle) */
+.pswp__ui--idle .pswp__top-bar {
+	opacity: 0;
+}
+
+.pswp__ui--idle .pswp__button--arrow--left,
+.pswp__ui--idle .pswp__button--arrow--right {
+	opacity: 0;
+}
+
+/*
+	pswp__ui--hidden class is added when controls are hidden
+	e.g. when user taps to toggle visibility of controls
+*/
+.pswp__ui--hidden .pswp__top-bar,
+.pswp__ui--hidden .pswp__caption,
+.pswp__ui--hidden .pswp__button--arrow--left,
+.pswp__ui--hidden .pswp__button--arrow--right {
+	/* Force paint & create composition layer for controls. */
+	opacity: 0.001;
+}
+
+/* pswp__ui--one-slide class is added when there is just one item in gallery */
+.pswp__ui--one-slide .pswp__button--arrow--left,
+.pswp__ui--one-slide .pswp__button--arrow--right,
+.pswp__ui--one-slide .pswp__counter {
+	display: none;
+}
+
+.pswp__element--disabled {
+	display: none !important;
+}
+
+.pswp--minimal--dark .pswp__top-bar {
+	background: none;
+}
+/* Social Media, Buy Button*/
+#photonic-social { padding: 0.2em; border: none; border-radius: 4px;background: #111;background: rgba(0, 0, 0, 0.5); display: inline-block; }
+#photonic-social a { width: 28px; height: 28px; display: block; float: left; color: inherit; text-decoration: none;  margin: 0 0.2em; cursor: pointer; }
+a.photonic-buy-link { width: 28px; height: 28px; display: inline-block; color: inherit; text-decoration: none; margin: 0 0.4em; cursor: pointer; vertical-align: middle; }
+#photonic-social div, .photonic-buy-link .icon-buy { font-size: 28px; float: left; position: relative; width: 100%; height: 100%; background-image: url('../../../images/Icons.svg?v=2.19'); background-color: #bbb; background-size: 100%; background-repeat: no-repeat; border-radius: 3px; }
+#photonic-social a:hover div { background-color: #6af; }
+#photonic-social a:first-child {margin-left: 0; }
+#photonic-social a:last-child {margin-right: 0; }
+#photonic-social .icon-facebook { background-position: 0 0; }
+#photonic-social .icon-twitter { background-position: 0 -112px; }
+#photonic-social .icon-pinterest { background-position: 0 -56px; }
+.photonic-buy-link .icon-buy { background-position: 0 -252px; background-color: transparent; }
+#photonic-social .icon-twitter:before, #photonic-social .icon-facebook:before, #photonic-social .icon-twitter:after, #photonic-social .icon-facebook:after { content: '' !important; }
+
+/* Lightboxes */
+#swipebox-arrows {text-align: center; }
+#swipebox-arrows #photonic-social { background: none; position: absolute; top: 50%; left: 50%; transform: translateY(-50%) translateX(-50%); }
+
+#cboxContent #photonic-social { position: absolute; top: 14px; left: 14px; }
+#cboxContent button { padding: 0; }
+
+.fancybox-title #photonic-social {position: absolute; right: 0; top: 50%; transform: translateY(-50%);}
+.fancybox-title-inside-wrap { margin-top: 10px !important; padding-top: 0 !important; }
+.fancybox-title-over-wrap { display: block; width: 100%; box-sizing: border-box; }
+
+#pp_full_res #photonic-social { position: absolute; top: 14px; left: 28px;}
+
+#imagelightbox-overlay #photonic-social { position: absolute; top: 2.5em; left: 2.5em; }
+
+.lg-toolbar #photonic-social { float: right; margin-top: 8px; background: transparent; }
+
+.photonic-featherlight #photonic-social { position: absolute; top: 5%; left: 5%; }
+.fancybox-caption #photonic-social { float: right; }
+
+#lightcase-content { background: transparent; }
+.fancybox-slide--html .fancybox-content { overflow: hidden; padding: 0; }
+@media screen and (min-width: 641px) {
+	#lightcase-case:not([data-lc-type=error]) #lightcase-content .lightcase-contentInner .lightcase-inlineWrap { padding: 0; overflow: hidden; }
+}
+video.photonic { margin: 0; padding: 0; }
+
+
+div.photonic-slideshow {
+	width: 100%;
+	clear: both;
+	display: -ms-flexbox;
+
+	display: -webkit-box;
+	display: -moz-box;
+	-webkit-box-orient: horizontal;
+	-moz-box-orient: horizontal;
+
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+}
+div.photonic-slideshow .lSSlideOuter { width: 100%; }
+.photonic-slideshow-adapt-height-width img { width: 100%; }
+.lSAction > .lSNext, .lSAction > .lSPrev { color: transparent; }
+.lightSlider li {position: relative; }
+.photonic-slide-center .lightSlider li { text-align: center; }
+.lSSlideOuter .lSPager.lSGallery { margin-bottom: 5px; margin-top: 0 !important; }
+.photonic-slideshow-img { display: none; }
+.lSSlideOuter .photonic-slideshow-img { display: list-item; }
+ul.slideshow-grid-panel  { float: left; width: 100% !important; position: relative; display: inline-block; }
+li.slideshow-grid { width: 100% !important; }
+li.slideshow-grid li { display: inline-block; }
+.slideshow-grid-panel a { display: inline-block; }
+
+.photonic-standard-layout {
+	float: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+
+	display: -ms-flexbox;
+	display: -webkit-box;
+	display: -moz-box;
+	-webkit-box-orient: horizontal;
+	-moz-box-orient: horizontal;
+
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+.photonic-standard-layout .photonic-level-1 { float: left; position: relative; }
+.photonic-standard-layout .photonic-level-1:after { content: ''; visibility: hidden; display: block; height: 0; clear: both; }
+
+.photonic-gallery-1c { width: 98%; }
+.photonic-gallery-2c { width: 49%; }
+.photonic-gallery-3c { width: 32%; }
+.photonic-gallery-4c { width: 24%; }
+.photonic-gallery-5c { width: 19%; }
+.photonic-gallery-6c { width: 16%; }
+.photonic-gallery-7c { width: 14%; }
+.photonic-gallery-8c { width: 12%; }
+.photonic-gallery-9c { width: 10.5%; }
+.photonic-gallery-10c { width: 9.5%; }
+.photonic-gallery-11c { width: 8.6%; }
+.photonic-gallery-12c { width: 8%; }
+.photonic-gallery-13c { width: 7.2%; }
+.photonic-gallery-14c { width: 6.8%; }
+.photonic-gallery-15c { width: 6.5%; }
+.photonic-gallery-16c { width: 6.2%; }
+.photonic-gallery-17c { width: 5.8%; }
+.photonic-gallery-18c { width: 5.5%; }
+.photonic-gallery-19c { width: 5.2%; }
+.photonic-gallery-20c { width: 4.95%; }
+
+.photonic-tree li { list-style: none; }
+
+.photonic-panel ul { padding: 0; margin: 10px auto; }
+.photonic-panel { display: none; text-align: center; width: 800px; z-index: 5; padding: 10px; border-radius:10px; }
+
+.photonic-thumb {
+	/*display: inline-block;*/
+	display: none;
+	list-style: none;
+	vertical-align: top;
+	text-align: center;
+	background: transparent !important;
+	line-height: 1.1em;
+	zoom: 1;
+	box-sizing: border-box;
+	padding: 5px;
+}
+
+.slideshow-grid-panel .photonic-level-1 { display: inline-block; }
+
+.photonic-masonry-layout { width: 100% !important; position: relative; clear: both; margin: 0 auto; }
+.photonic-masonry-layout .photonic-thumb { width: 100%; display: block; }
+.photonic-ie .photonic-masonry-layout .photonic-thumb { display: inline-block; }
+.photonic-masonry-layout .photonic-thumb a { padding: 0; width: 100%; }
+.photonic-masonry-layout.title-display-below .photonic-title { padding: 2px; overflow: hidden; 	font-family: "Noto Sans", HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 0.7em;}
+.photonic-masonry-layout .photonic-thumb a img { width: 100%; height: 100%; padding: 0; display: none; }
+.photonic-stream .photonic-masonry-layout .photonic-thumb { margin: 0; position: relative; }
+.photonic-masonry-layout { -moz-column-gap: 0; 	-webkit-column-gap: 0; 	column-gap: 0; }
+
+.photonic-mosaic-layout { width: 100% !important; position: relative; clear: both; margin: 0 auto; overflow: hidden; }
+.photonic-mosaic-layout .photonic-thumb { display: inline-block; margin: 0; position: absolute; padding: 0; }
+.photonic-mosaic-layout .photonic-thumb a { padding: 0; width: 100%; height: 100%; }
+.photonic-mosaic-layout .photonic-thumb a img { width: 100%; height: 100%; padding: 0; display: none; }
+.photonic-stream .photonic-mosaic-layout .photonic-thumb { margin: 0; }
+
+.photonic-random-layout { width: 100% !important; position: relative; clear: both; margin: 0 auto; overflow: hidden; }
+.photonic-random-layout .photonic-thumb { display: inline-block; margin: 0; position: relative; padding: 2px; float: left; }
+.photonic-random-layout .photonic-thumb a { box-sizing: border-box; padding: 0; width: 100%; height: 100%; color: transparent; }
+.photonic-random-layout .photonic-thumb a img { width: 100% !important; height: 100% !important; padding: 0; display: none; }
+.photonic-stream .photonic-random-layout .photonic-thumb { margin: 0; }
+
+a.photonic-level-3-expand {
+	float: right;
+	text-decoration: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow:  none;
+	box-shadow: none;
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 50%;
+	background: #fff url('../../../images/Icons.svg?v=2.19') no-repeat;
+	background-size: 100%;
+}
+a.photonic-level-3-expand-plus {
+	background-position: 0 -7.5em;
+}
+a.photonic-level-3-expand-down {
+	background-position: 0 -9em;
+}
+a.photonic-level-3-expand-up {
+	background-position: 0 -10.5em;
+}
+a.photonic-level-3-expand:hover {
+	text-decoration: none;
+	background-color: #6af;
+}
+
+.photonic-stream { clear: both; display: inline-block; width: 100%; margin: 1.6em 0;}
+
+.photonic-stream img.circle {
+	border-radius: 50%;
+}
+
+.photonic-title-info { position: relative; }
+.title-display-hover-slidedown-show .photonic-title-info { margin-top: -100%; }
+.title-display-hover-slideup-show .photonic-thumb a img, .title-display-slideup-stick .photonic-thumb a img { padding: 0; }
+.title-display-hover-slideup-show a .photonic-title, .photonic-slideshow.title-display-hover-slideup-show li .photonic-title,
+.title-display-slideup-stick a .photonic-title, .photonic-slideshow.title-display-slideup-stick li .photonic-title {
+	background: #111;
+	background: rgba(33, 33, 33, 0.8);
+	display: none;
+	width: 100%;
+	font-size: 0.7em;
+	color: #ddd;
+	font-family: "Noto Sans", HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	position: absolute;
+	padding: 3px;
+	text-align: left;
+	box-sizing: border-box;
+}
+
+.title-display-hover-slideup-show a .photonic-title, .photonic-slideshow.title-display-hover-slideup-show li .photonic-title, .title-display-slideup-stick a .photonic-title, .photonic-slideshow.title-display-slideup-stick li .photonic-title { bottom: 0; }
+.photonic-slideshow.title-display-hover-slideup-show li .photonic-title, .photonic-slideshow.title-display-slideup-stick li .photonic-title { font-size: 1em; }
+.photonic-standard-layout.title-display-slideup-stick a .photonic-title, .slideshow-grid-panel.title-display-slideup-stick a .photonic-title, .photonic-slideshow.title-display-slideup-stick li .photonic-title { display: block; }
+.photonic-slideshow.title-display-below li .photonic-title {
+	background-color: rgba(0, 0, 0, 0.75);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 20px;
+	color: white;
+	width: 100%;
+}
+
+.photonic-thumbnail-effect-opacity .photonic-thumb img { filter: alpha(opacity=75); opacity: 0.75; }
+.photonic-thumbnail-effect-opacity .photonic-thumb a:hover img { filter: alpha(opacity=100); opacity: 1; }
+
+.photonic-thumbnail-effect-zoom a img { -webkit-transition: transform 2s ease; -moz-transition: transform 2s ease; -ms-transition: transform 2s ease; -o-transition: transform 2s ease; transition: transform 2s ease; }
+.photonic-thumbnail-effect-zoom a:hover img { -webkit-transform: scale(1.2); -moz-transform: scale(1.2); -ms-transform: scale(1.2); -o-transform: scale(1.2); transform: scale(1.2); }
+.photonic-thumbnail-effect-zoom a, .photonic-thumbnail-effect-zoom a:hover { overflow: hidden; }
+
+.photonic-thumb a img { padding: 5px; display: inline-block; }
+.photonic-thumb a { display: inline-block; text-align: center; text-decoration: none; font-size: 0.9em; vertical-align: middle; border: none; /*padding: 5px;*/ box-shadow: none; width: 100%; position: relative; }
+.photonic-thumb a span { display: block; padding: 3px; width: 100%; }
+
+.photonic-object-header { list-style: none; display: inline-block; width: 100%; text-align: left; border-width: 1px 0 1px 0; border-style: dotted; border-color: #888; padding: 0.5em 0; margin: 0.5em 0; }
+.photonic-header-thumb { float: left; margin: 0 1em 0 0; }
+.photonic-header-details { overflow: hidden; }
+.photonic-header-title { font-size: 120%; font-weight: bold; display: block; text-decoration: none; }
+.photonic-header-info { font-size: 90%; font-style: italic; }
+
+.photonic-title-photo-count { font-size: 85%; font-style: italic; display: block; }
+
+.photonic-loading {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 100px;
+	height: 100px;
+	margin-top: -50px;
+	margin-left: -50px;
+	overflow: hidden;
+	z-index: 1100;
+	display: none;
+	background: #fff url(../../../images/loading.gif) no-repeat center;
+}
+
+.photonic-more-button, .photonic-more-button:visited,
+.photonic-login-box a.auth-button, .photonic-login-box a.auth-button:visited {
+	padding: 10px 15px;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	min-width: 120px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	margin: 20px 0 0;
+	background: #6af;
+	background: linear-gradient(#336699 20%, #224477 100%);
+	color: #fff;
+	float: none;
+	border-radius: 3px;
+}
+
+.photonic-more-button:hover, .photonic-more-button:active, .photonic-more-button:focus,
+.photonic-login-box a.auth-button:hover, .photonic-login-box a.auth-button:active, .photonic-login-box a.auth-button:focus {
+	text-decoration: none;
+	color: #fff;
+	background: #48d;
+	background: linear-gradient(#224477 20%, #336699 100%);
+}
+
+.photonic-login-box {
+	border: 1px solid #888;
+	padding: 10px;
+	border-radius: 5px;
+	display: block;
+	clear: both;
+}
+
+.photonic-auth-button, .photonic-more-button {
+	margin: 0 auto;
+	text-align: center;
+}
+.photonic-more-link-container {
+	text-align: right;
+	display: inline-block;
+	width: 100%;
+}
+
+.photonic-panel-header { top: 0; left: 0; padding: 10px 0; text-align: left; font-weight: bold; border-bottom: 5px solid #787878; color: #787878; position: relative; display: table; width: 100%; border-top: none; margin: 0; }
+.photonic-panel-header div { vertical-align: middle; margin: 0 5px; }
+.photonic-panel-header a { text-decoration: none; font-size: 100%; }
+
+.photonic-password-prompter {
+	display: none;
+}
+.photonic-password-prompter {
+	background: transparent;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000 !important ;
+}
+.photonic-password-prompter-content {
+	width: 400px;
+	position: relative;
+	margin: -150px auto 0;
+	top: 50%;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+.photonic-password-prompter h3 {
+	background: #6af;
+	background: linear-gradient(to bottom right, #336699 20%, #224477 100%);
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #fff;
+	font-size: 16px;
+	font-weight: normal;
+	padding: 0.5em;
+	margin: 0;
+	display: inline-block;
+	width: 100%;
+}
+.photonic-password-prompter h3 .title {
+	float: left;
+}
+.photonic-password-prompter h3 .close {
+	float: right;
+	padding: 0;
+	margin: 0;
+	line-height: inherit;
+	font-size: inherit;
+	background: none;
+}
+.photonic-prompt-body {
+	padding: 1em;
+	text-align: left;
+}
+.photonic-prompt-body input[type="password"] {
+	width: 100%;
+	padding: 0 0.5em;
+}
+.photonic-password-submit {
+	background: #6af;
+	background: linear-gradient(to bottom right, #336699 20%, #224477 100%);
+	display: inline-block;
+	box-sizing: border-box;
+	margin-top: 0.5em;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	padding: 0.2em 1em;
+	line-height: 24px;
+	text-transform: none;
+	font-weight: normal;
+}
+
+#TB_overlay { z-index: 1050 !important; }
+#TB_window { z-index: 1060 !important; }
+
+#fancybox-right, #fancybox-left { width: 15%; }
+#fancybox-wrap, #fancybox-content { box-sizing: content-box; }
+
+.fancybox-inner { overflow: auto !important; }
+.photonic-fancybox .fancybox-inner { overflow: hidden !important; }
+
+.photonicModalOverlay {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: #333;
+	background: rgba(33, 33, 33, 0.8);
+	text-align: center;
+}
+
+.photonicModalOverlayScrollable {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+
+.photonicModal { margin: 0 auto; }
+
+.photonicModal.photonic-panel { border-radius: 0 0 10px 10px; }
+
+a.photonicModalClose {
+	position: absolute;
+	float: right;
+	border: none;
+	font-family: "Noto Sans", HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 30px;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	color: #bbb;
+	top: 0;
+	z-index: 10000;
+}
+
+.photonic-icon {
+	background-image: url("../../../images/Icons.svg?v=2.19");
+	background-size: 100%;
+	width: 96px;
+	height: 96px;
+	display: block;
+	position: relative;
+}
+.photonic-error-icon { background-position: 0 -768px; }
+.photonic-error .photonic-icon { float: left; }
+.photonic-error .photonic-message { margin-left: 100px; display: block; }
+.photonic-error { display: block; width: 100%; box-sizing: border-box; position: relative; padding: 1em 0; }
+
+.photonic-html5-external { display: none; }
+
+.pswp__item .photonic-video { text-align: center; position: relative; top: 50%; transform: translateY(-50%); }
+
+.mfp-inline-holder .mfp-content { text-align: center; }
+.mfp-close-btn-in .mfp-inline-holder .mfp-close { color: #eee; }
+.mfp-content #photonic-social { position: absolute; top: 45px; left: 5px; }
+
+.photonic-stream.alignwide { }
+.photonic-stream.alignfull { }
+
+.photonic-helper {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+[data-photonic-stream-provider='flickr'] [data-photonic-media-type='video']:hover:before,
+[data-photonic-stream-provider='smug'] [data-photonic-media-type='video']:hover:before,
+[data-photonic-stream-provider='zenfolio'] [data-photonic-media-type='video']:hover:before,
+[data-photonic-stream-provider='instagram'] [data-photonic-media-type='video']:hover:before {
+	content: '';
+	background-image: url("../../../images/Icons.svg?v=2.19");
+	background-size: 100%;
+	-ms-background-position-y: -480px;
+	background-position-y: -480px;
+	width: 48px;
+	height: 48px;
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -24px;
+	margin-left: -24px;
+	z-index: 1;
+}
+
+.photonic-tooltip-container {
+	transform: translateZ(0);
+	position: absolute;
+	max-width: 300px;
+	padding: 8px 10px 10px;
+	font-family: "Noto Sans", HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	-webkit-box-shadow: 0 0 5px #aaa;
+	box-shadow: 0 0 5px #aaa;
+	background: #2d2d2d;
+	color: #eee;
+	border-radius: 4px;
+	opacity: 1;
+	z-index: 9999;
+}
+.photonic-tooltip-container[class*=" tooltip-"] {
+	-webkit-animation: tooltip-anim 0.8s;
+	-moz-animation: tooltip-anim 0.8s;
+	-o-animation: tooltip-anim 0.8s;
+	animation: tooltip-anim 0.8s;
+}
+.photonic-tooltip-container::after {
+	position: absolute;
+	display: block;
+	content: "";
+}
+.photonic-tooltip-container.tooltip-left::after {
+	right: -8px;
+	top: 50%;
+	transform: translateY(-50%);
+	border-style: solid;
+	border-width: 6px 0 6px 8px;
+	border-color: transparent transparent transparent #2d2d2d;
+}
+.photonic-tooltip-container.tooltip-right::after {
+	left: -8px;
+	top: 50%;
+	transform: translateY(-50%);
+	border-style: solid;
+	border-width: 6px 8px 6px 0;
+	border-color: transparent #2d2d2d transparent transparent;
+}
+.photonic-tooltip-container.tooltip-center::after {
+	top: -8px;
+	left: 50%;
+	transform: translateX(-50%);
+	border-style: solid;
+	border-width: 0 6px 8px 6px;
+	border-color: transparent transparent #2d2d2d transparent;
+}
+.photonic-tooltip-container.no-display {
+	display: none;
+}
+
