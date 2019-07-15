@@ -33,15 +33,16 @@
                         </div>
                         <div class="newsest-content-r">
                             <div class="newsest-title truncate"><a href="<?= $news_link_lk;?>" title = "<?= $news_title?>"><?= $news_title?></a></div>
-                            <div class="newsest-expect">
-                                <?= nl2br($news_description);?>
-                            </div>
                             <div class="newest-info">
                                 <i class="material-icons tiny">update</i>
                                 <div class="newest-date">  <?= $news_date_post;?></div>
                                 <i class="material-icons tiny">remove_red_eye</i>
                                 <div class="newest-views"><?= $news_hits;?></div>
                             </div>
+                            <div class="newsest-expect">
+                                <?= nl2br($news_description);?>
+                            </div>
+                            
                         </div>
                         
                     </div>

@@ -11,7 +11,9 @@
     font-weight: 400;
     src: url('fonts/HL-OngDo-Unicode.ttf');
 }
-  
+a, span, p, div{
+    font-family: 'Open Sans', arial, sans-serif;
+}
 .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
@@ -31,6 +33,10 @@
     /* background-image: linear-gradient(#5e3913, #a16327, #5f3913); */
     /* background-image: url('image/bg_nav.png'); */
     background-image: url('image/bg_nav_brown.png');
+}
+.color-dranger{
+    color: #ff0033;
+    font-style: italic;
 }
 .page-footer{
     background-color: #a0630a;
@@ -221,11 +227,16 @@ nav ul a{
     padding-left: 10px;
 }
 .newsest-title a{
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 500;
+    color: #111111;
+}
+.newsest-title a:hover{
+    color:#f0a91b;
 }
 .newsest-expect{
-    height: 70px;
+    color: #777;
+    height: 65px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -242,7 +253,68 @@ nav ul a{
     padding-left: 5px;
     padding-right: 5px;
 }
+.shadow{
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
 /* end banner css */
+
+/* css pháp âm */
+.video-content{
+    display: flex;
+    flex-flow: row nowrap;
+}
+.video-content iframe.__youtube_prefs__ {
+    border-width: 0;
+    width: 100%;
+    height: 480px;
+}
+.video-list, .video-main{
+    padding-top: 15px;
+}
+.video-main{
+    width: 70%;
+    padding-right: 15px;
+}
+.video-list{
+    display: flex;
+    width: 30%;
+    flex-flow: row nowrap;
+}
+.video-list .video-thumnail{
+    width: 80px;
+    height: 60px;
+}
+.video-list .video-thumnail img{
+    width: 100%;
+    height: 100%;
+}
+.video-title-right a{
+    padding-left: 5px;
+    font-size: 16px;
+    height: 25px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.video-rigth-info{
+    display: flex;
+    color: #777;
+    font-size: 12px;
+}
+.video-title-right{
+    padding-left: 5px;
+}
+.video-title-content{
+    font-size: 20px;
+    height: 25px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+/* end css pháp âm */
+
 /* #section-news{
     margin-top: 0;
 } */

@@ -12,16 +12,7 @@ get_header();
         <!-- end tin tức -->
 
         <!-- pháp âm  -->
-        <section id ="section-radio">
-            <div class="row row margin0-bottom box-title-left">
-                <h2 class="color-a margin0 title-line-bottom">
-                    <a class="title-header" href="http://">Pháp âm</a>
-                </h2>
-            </div>
-            <div class="row">
-                <?php echo do_shortcode('[videojs_video url="https://www.youtube.com/watch?v=Y4SSN9SvqSc"]');?>
-            </div>
-        </section>
+        <?php get_template_part('template-part/phapam'); ?>
         <!-- end pháp âm -->
 
         <!-- phật sự + thông báo -->
