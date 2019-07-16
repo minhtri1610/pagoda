@@ -36,6 +36,22 @@
                 // autoplay: true,
                 // autoplaySpeed: 3000,
             });
+            $('.slick-books').slick({
+                infinite: true,
+                dots: true,
+                slidesToShow: 3,
+                slidesToScroll: 1
+                // autoplay: true,
+                // autoplaySpeed: 3000,
+            });
+            $('.slick-images').slick({
+                infinite: true,
+                dots: true,
+                slidesToShow: 3,
+                slidesToScroll: 1
+                // autoplay: true,
+                // autoplaySpeed: 3000,
+            });
         });
     </script>
     <?php wp_footer(); ?>

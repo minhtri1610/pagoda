@@ -242,7 +242,7 @@ nav ul a{
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
-.newest-info{
+.info-box{
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -258,11 +258,31 @@ nav ul a{
 }
 /* end banner css */
 
+/* css tag a */
+.title-a{
+    font-size: 16px;
+    height: 25px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-weight: 600;
+}
+/* end css tag a */
+/* common css */
+.exp-content{
+    color: #777;
+    height: 65px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+/* end common css */
 /*css news*/
 .news-content{
     display: flex;
     flex-flow: row nowrap;
-    margin-left: -0.75rem;
 }
 .news-main{
     flex: 3;
@@ -298,12 +318,15 @@ nav ul a{
     align-items: center;
 }
 .news-item{
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     display: flex;
     flex-flow: row nowrap;
 }
 .news{
     padding-left: 0!important;
+}
+.news-main-img{
+    height: 180px
 }
 /*end css news*/
 
@@ -342,13 +365,6 @@ nav ul a{
 }
 .video-title-right a{
     padding-left: 5px;
-    font-size: 16px;
-    height: 25px;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    font-weight: 600;
 }
 .video-rigth-info{
     display: flex;

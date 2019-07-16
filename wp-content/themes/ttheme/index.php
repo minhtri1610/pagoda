@@ -15,9 +15,9 @@ get_header();
         <?php get_template_part('template-part/phapam'); ?>
         <!-- end pháp âm -->
 
-        <!-- phật sự + thông báo -->
-        <?php get_template_part('template-part/phatsu'); ?>
-        <!-- end phật sự + thông báo -->
+        <!-- thư viện hình ảnh -->
+         <?php get_template_part('template-part/lib-images'); ?>
+        <!-- end thư viện hình ảnh -->
 
         <!-- Góc chia sẻ -->
         <section id ="section-radio">
@@ -32,30 +32,10 @@ get_header();
         </section>
         <!-- end góc chia sẻ -->
 
-        <!-- thư viện hình ảnh -->
-        <section id ="section-radio">
-            <div class="row row margin0-bottom box-title-left">
-                <h2 class="color-a margin0 title-line-bottom">
-                    <a class="title-header" href="http://">Thư viện hình ảnh</a>
-                </h2>
-            </div>
-            <div class="row">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum delectus tempore provident dicta quidem, obcaecati, laboriosam at, veniam magnam placeat debitis ad eveniet laudantium corporis. Obcaecati voluptatum soluta odit facilis!
-            </div>
-        </section>
-        <!-- end thư viện hình ảnh -->
+       
 
         <!-- thư viện kinh sách -->
-        <section id ="section-radio">
-            <div class="row row margin0-bottom box-title-left">
-                <h2 class="color-a margin0 title-line-bottom">
-                    <a class="title-header" href="http://">Thư viện kinh sách</a>
-                </h2>
-            </div>
-            <div class="row">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum delectus tempore provident dicta quidem, obcaecati, laboriosam at, veniam magnam placeat debitis ad eveniet laudantium corporis. Obcaecati voluptatum soluta odit facilis!
-            </div>
-        </section>
+        <?php get_template_part('template-part/lib-kinhsach'); ?>
         <!-- end thư viện kinh sách -->
 
         <!-- thống kê truy cập -->

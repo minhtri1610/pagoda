@@ -30,9 +30,9 @@
                         <?php echo do_shortcode('[embedyt]'.$video_link_youtube.'[/embedyt]');?>
                     </div>
                     <div class="video-title-content">
-                        <a title="<?= $video_title;?>" href="<?= $video_url;?>"><?= $video_title;?></a>
+                        <a class="title-a" title="<?= $video_title;?>" href="<?= $video_url;?>"><?= $video_title;?></a>
                     </div>
-                    <div class="newest-info video-post-info">
+                    <div class="newest-info video-post-info info-box">
                         <i class="material-icons tiny">update</i>
                         <div class="newest-date">  <?= $video_date_post;?></div>
                         <i class="material-icons tiny">remove_red_eye</i>
@@ -46,8 +46,8 @@
                         <img src="<?= $video_thumnail?>" alt="">
                     </div>
                     <div class="video-title-right">
-                        <a title="<?= $video_title;?>" href="<?= $video_url;?>"><?= $video_title;?></a>
-                        <div class="video-rigth-info">
+                        <a class="title-a" title="<?= $video_title;?>" href="<?= $video_url;?>"><?= $video_title;?></a>
+                        <div class="video-rigth-info info-box">
                             <i class="material-icons tiny">update</i>
                             <div class="newest-date">  <?= $video_date_post;?></div>
                         </div>
