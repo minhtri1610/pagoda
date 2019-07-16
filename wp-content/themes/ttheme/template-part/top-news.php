@@ -4,7 +4,45 @@
             <div class="row margin0-bottom box-title-left">
                 <h2 class=" title-line-bottom margin-bottom-right color-a margin0"><a class="title-header" href="<?= URL_ROOT?>">Tin mới</a></h2>
             </div>
-            <div class="row margin0-bottom">
+            <div class="news-content">
+                <div class="news-main">
+                    <div class="news-main-img">
+                        <img src="<?= URL_IMG."/office.jpg"?>" alt="">
+                    </div>
+                    <div class="news-main-title">
+                        Title main
+                    </div>
+                    <div class="news-main-info">
+                        <i class="material-icons tiny">update</i>
+                        <div class="newest-date">1990-33-33</div>
+                        <i class="material-icons tiny">remove_red_eye</i>
+                        <div class="newest-views">0</div>
+                    </div>
+                    <div class="news-main-expr">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem voluptatibus officiis incidunt, totam itaque culpa! Beatae optio repellendus, sunt qui fuga quidem obcaecati quaerat, itaque id deleniti vel rerum et.
+                    </div>
+                </div>
+                <div class="news-right">
+                    <div class="news-item">
+                        <div class="news-r-img">
+                            <img src="<?= URL_IMG."/office.jpg"?>" alt="">
+                        </div>
+                        <div class="news-r-info">
+                            <div class="news-r-title">
+                                Title 01
+                            </div>
+                            <div class="new-r-detail-info">
+                                <i class="material-icons tiny">update</i>
+                                <div class="newest-date">1990-33-33</div>
+                                <i class="material-icons tiny">remove_red_eye</i>
+                                <div class="newest-views">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- <div class="row margin0-bottom">
                 <?php 
                     $args_banner = array(
                         'post_type' => 'tintuc',
@@ -52,7 +90,7 @@
                         wp_reset_postdata();
                     endif;
                 ?>
-            </div>
+            </div> -->
         </div>
         <div class="col s4">
             <div class="row ">

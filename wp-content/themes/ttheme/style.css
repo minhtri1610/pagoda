@@ -258,6 +258,55 @@ nav ul a{
 }
 /* end banner css */
 
+/*css news*/
+.news-content{
+    display: flex;
+    flex-flow: row nowrap;
+    margin-left: -0.75rem;
+}
+.news-main{
+    flex: 3;
+    padding-right: 15px;
+    padding-top: 15px;
+}
+.news-right{
+    flex: 3;
+}
+.news-main-img img{
+    width: 100%;
+    height: 100%;
+}
+.news-right{
+    padding-top: 15px;
+}
+.news-r-img{
+    height: 60px;
+    width: 80px;
+    flex: 1
+}
+.news-r-info{
+    flex: 3;
+    padding-left: 5px;
+}
+.news-r-img img{
+    width: 100%;
+    height: 100%;
+}
+.news-main-info, .new-r-detail-info{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+.news-item{
+    padding-bottom: 5px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+.news{
+    padding-left: 0!important;
+}
+/*end css news*/
+
 /* css pháp âm */
 .video-content{
     display: flex;
