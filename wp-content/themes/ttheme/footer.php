@@ -1,20 +1,25 @@
-    
+    <div class="content-social">
+        <div class="list-social">
+            <div class="item-social">
+                <img src="<?= URL_IMG.'/icon-social/facebook.png'?>" alt="">
+            </div>
+            <div class="item-social">
+                <img src="<?= URL_IMG.'/icon-social/zalo.png'?>" alt="">
+            </div>
+        </div>
+    </div>
     <footer class="page-footer">
-
-        <div class="container">
+        <div class="container main-footer">
             <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Chùa Phước Lộc</h5>
-                    <p class="grey-text text-lighten-4">Địa chỉ: Mỹ Cát - Phù Mỹ - Bình Định</p>
+                <div class="col-md-6 f-info">
+                    <h5 class="white-text name-title">
+                        <a href="<?= THEME_URL?>">Chùa Phước Lộc</a></h5>
+                    <p class="mb0">Địa chỉ: Mỹ Cát - Phù Mỹ - Bình Định</p>
+                    <p class="mb0">Email: chuaphuocloc@gmail.com</p>
                 </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                    </ul>
+                <div class="col-md-6">
+                    <h5 class="white-text">Fanpage</h5>
+                    
                 </div>
             </div> 
         </div>
@@ -26,6 +31,7 @@
     </footer>
     
     <script type="text/javascript" src="<?= URL_JS.'/jquery-11.0.min.js'?>"></script>
+    <script type="text/javascript" src="<?= URL_JS.'/bootstrap.min.js'?>"></script>
     <script type="text/javascript" src="<?= URL_JS.'/slick/slick.min.js'?>"></script>
     <script type="text/javascript" src="<?= URL_JS.'/index.js'?>"></script>
     <script>
@@ -52,6 +58,9 @@
                 // autoplay: true,
                 // autoplaySpeed: 3000,
             });
+            $('.slick-banner').show();
+            // $('.slick-books').show();
+            // $('.slick-images').show();
         });
     </script>
     <?php wp_footer(); ?>

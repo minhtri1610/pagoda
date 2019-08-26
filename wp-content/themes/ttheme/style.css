@@ -11,14 +11,32 @@
     font-weight: 400;
     src: url('fonts/HL-OngDo-Unicode.ttf');
 }
+li{
+    list-style: none;
+}
 a, span, p, div{
     font-family: 'Open Sans', arial, sans-serif;
+}
+a:hover{
+    text-decoration: none;
+}
+.div-title-header{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgb(255, 255, 255);
+    padding: 0 1rem;
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: yellow;
 }
 .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;
+    font-size: 12px;
     line-height: 1;
     letter-spacing: normal;
     text-transform: none;
@@ -42,10 +60,10 @@ a, span, p, div{
     background-color: #a0630a;
 }
 .c-left{
-    margin-left: 15%;
+    margin-left: 10%;
 }
-.p-left15{
-    padding-left: 15%!important;
+.p-left10{
+    padding-left: 10%!important;
 }
 .w100-img{
     max-width: 100%;
@@ -119,13 +137,20 @@ nav{
 .brand-logo h5, .brand-logo h1{
     color: #ff0033;
     font-family: 'Thu phap';
-    margin-top: 1.5rem;
+    font-size: 4.5rem;
+}
+.grey-div{
+    padding: 3rem 0;
+    background-color: #f9f6ee;
+}
+.white-div{
+    padding: 3rem 0;
 }
 .logo-head{
     /* margin-top: 3px; */
 }
 section{
-    margin-top: 15px;
+    /* margin-top: 15px; */
 }
 nav ul a{
     font-size: 1.2rem;
@@ -133,20 +158,20 @@ nav ul a{
 }
 /* css header */
 .title-header{
-    background: #8b5200;
-    /* box-shadow: 3px 3px 6px 0px #006633; */
-    /* box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2); */
-    color: #fff100;
+    color: #ff8500;
     font-family: 'Thu phap';
-    font-size: 1.3rem;
-    margin-top: 0;
-    margin-bottom: 0;
-    /* width: 150px; */
+    font-size: 2rem;
     line-height: 2.5rem;
     display: inline-block;
     vertical-align: middle;
     padding: 0 15px;
+    font-weight: 600;
     /* text-transform: uppercase; */
+}
+.title-header::before, .title-header::after{
+    content: '___';
+    width: 10%;
+    color: #ff8500;
 }
 .title-line-bottom{
     border-bottom: 1px solid #8b5200;
@@ -175,7 +200,7 @@ nav ul a{
 }
 /*Banner css*/
 .banner-item{
-    height: 380px;
+    height: 420px;
 }
 .banner-item img{
     width: 100%;
@@ -194,7 +219,7 @@ nav ul a{
     position: absolute;
     bottom: 0;
     padding: 10px 15px;
-    background: #99660063;
+    background: #c06f168f;
     z-index: 999;
     width: 100%;
 }
@@ -278,6 +303,18 @@ nav ul a{
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
+.slick-banner, .slick-books, .slick-images{
+    display: none;
+}
+#banner{
+    padding-top: 30px;
+}
+.mb0{
+    margin-bottom: 0;
+}
+/* #section-news, #section-radio{
+    
+} */
 /* end common css */
 /*css news*/
 .news-content{
@@ -288,6 +325,7 @@ nav ul a{
     flex: 3;
     padding-right: 15px;
     padding-top: 15px;
+    max-width: 25%;
 }
 .news-right{
     flex: 3;
@@ -385,11 +423,169 @@ nav ul a{
     -webkit-box-orient: vertical;
 }
 /* end css pháp âm */
-
-/* #section-news{
-    margin-top: 0;
-} */
+.brand-logo:hover{
+    text-decoration: none;
+}
 /* end css header */
+/* /style book */
+.style-book-cover{
+    position: relative;
+    z-index: 1;
+    background: #c06f16;
+    padding: 20px 15px;
+    border-radius: 15px;
+    min-height: 10px;
+}
+.style-book-cover::before{
+    width: 40px;
+    height: 40px;
+    background: #9d5200;
+    border-radius: 0 0 15px 15px;
+    -webkit-box-shadow: -10px 0 0 #c06f16, -20px 0 0 #c06f16, -30px 0 0 #c06f16;
+    -moz-box-shadow: -10px 0 0 #c06f16,-20px 0 0 #c06f16,-30px 0 0 #c06f16;
+    box-shadow: -10px 0 0 #c06f16, -20px 0 0 #c06f16, -30px 0 0 #c06f16;
+    right: -40px;
+}
+.style-book-cover:before, .style-book-cover:after{
+    content: '';
+    position: absolute;
+    right: -40px;
+    bottom: 0;
+}
+.style-book-list{
+    margin: 25px 0;
+    background: #f9f6ee;
+    z-index: 99;
+    position: relative;
+    border-radius: 0 15px 15px 0;
+}
+.book-img{
+    height: 250px;
+    text-align: center;
+}
+.book-img img{
+    max-width: 100%;
+}
+.book-title{
+    padding: 10px 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #fff;
+}
+.book-title a{
+    color: #fff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.book-title a:hover{
+    color: yellow;
+}
+.style-book-cover .info-box{
+    color: #fff;
+}
+.b-item{
+    padding: 15px;
+    background: #fff;
+}
+.b-list .book-img{
+    height: 200px;
+}
+.b-list .book-title a {
+    color: #c06f16;
+}
+.b-list .book-title a:hover {
+    color: #007bff;
+}
+/* end style book */
+/* footer style */
+.f-info .white-text{
+    color: white;
+}
+footer{
+    color: white;
+}
+footer .name-title{
+    padding-top: 15px;
+}
+footer .name-title a{
+    font-size: 2.5rem;
+    color: yellow;
+    text-transform: uppercase;
+}
+.main-footer{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+/* end footer style */
+/* social style */
+.content-social{
+    position: fixed;
+    right: 0;
+    bottom: 20vh;
+}
+.list-social{
+    display: flex;
+    flex-flow: column;
+    width: 80px;
+    align-items: center;
+}
+.item-social img{
+    width: 35px;
+    /* padding: 5px 0; */
+}
+.item-social{
+    border: 1px solid #dcdcdc;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+/* end social style */
+/* /main css */
+main{
+    min-height: 80vh;
+}
+/* end main css */
+/* sub nav css */
+#sub-nav{
+    padding: 0.5rem 0;
+    background: rgb(240, 235, 219);
+}
+#sub-nav ul{
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 0;
+    margin-bottom: 0;
+}
+#sub-nav ul li a{
+    font-size: 14px;
+    padding: 15px;
+}
+/* end sub nav */
+/* css cau đối */
+#poster{
+    background: #f7f4ea;
+}
+.contain-caudoi{
+    background: url('image/lostus-grey.png') no-repeat right bottom;
+    background-size: contain;
+    line-height : 3rem;
+    font-family: 'Thu phap';
+    min-height: 150px;
+    color: #bb9546;
+    font-size: 30px;
+    align-items: center;
+    display: flex;
+    padding-left: 2rem;
+}
+.contain-caudoi p{
+    line-height: 3rem;
+    font-family: 'Thu phap';
+    padding-left:0!important;
+}
+.contain-caudoi:hover, .contain-caudoi:hover p{
+    color: #ff0033;
+}
+/* end css câu đối */
 @media only screen and (max-width: 414px) {
     .bg-hed{
         text-align: center;

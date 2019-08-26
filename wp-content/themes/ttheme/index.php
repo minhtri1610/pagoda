@@ -2,7 +2,7 @@
 get_header();
 ?>
     <!-- content -->
-    <div class="container">
+    <div class="index-body">
         <!-- content banner  -->
         <?php get_template_part('template-part/banner'); ?>
         <!-- end content banner -->
@@ -20,19 +20,8 @@ get_header();
         <!-- end thư viện hình ảnh -->
 
         <!-- Góc chia sẻ -->
-        <section id ="section-radio">
-            <div class="row row margin0-bottom box-title-left">
-                <h2 class="color-a margin0 title-line-bottom">
-                    <a class="title-header" href="http://">Góc chia sẻ</a>
-                </h2>
-            </div>
-            <div class="row">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum delectus tempore provident dicta quidem, obcaecati, laboriosam at, veniam magnam placeat debitis ad eveniet laudantium corporis. Obcaecati voluptatum soluta odit facilis!
-            </div>
-        </section>
+        <?php get_template_part('template-part/share'); ?>
         <!-- end góc chia sẻ -->
-
-       
 
         <!-- thư viện kinh sách -->
         <?php get_template_part('template-part/lib-kinhsach'); ?>
